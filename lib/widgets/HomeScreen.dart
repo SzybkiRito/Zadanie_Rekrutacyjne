@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-dynamic findOutlier(List<int> table) {
+int findOutlier(List<int> table) {
   if (table.length < 3) throw ArgumentError('Pass more numbers into array');
   bool isEven = table.where((e) => e.isEven).length > table.length / 2;
   int outlier = table.firstWhere((element) => isEven ? element.isOdd : element.isEven);
@@ -65,9 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     var pattern = RegExp(r'^-?\d+(,\s-?\d+)*$');
+                    var secondPattern = RegExp(r'^-?\d+(,-?\d+)*$');
 
-                    if (pattern.hasMatch(numbersController.text)) {
-                      List<String> userNumbers = numbersController.text.split(', ');
+                    if (pattern.hasMatch(numbersController.text) || secondPattern.hasMatch(numbersController.text)) {
+                      List<String> userNumbers = pattern.hasMatch(numbersController.text)
+                          ? numbersController.text.split(', ')
+                          : numbersController.text.split(',');
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => ResultScreen(
