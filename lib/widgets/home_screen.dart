@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zadanie_rekrutacyjne/widgets/ResultScreen.dart';
+import 'package:zadanie_rekrutacyjne/widgets/result_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               TextField(
                 controller: numbersController,
                 decoration: const InputDecoration(
-                  hintText: 'e.g. 2, 4, 0, 100, 4, 11, 2602, 36',
+                  hintText: '2, 4, 0, 100, 4, 11, 2602, 36',
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.greenAccent, width: 2.0),
                   ),
@@ -49,11 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               error
-                  ? const SizedBox(
+                  ? SizedBox(
                       height: 40,
                       child: Text(
-                        'Wpisz poprawny ciag cyfr',
-                        style: TextStyle(fontSize: 20, color: Colors.red),
+                        AppLocalizations.of(context)!.errorDigitSequence,
+                        style: const TextStyle(fontSize: 20, color: Colors.red),
                       ),
                     )
                   : const SizedBox(
@@ -84,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     }
                   },
-                  child: const Text('Wyszukaj'),
+                  child: Text(AppLocalizations.of(context)!.search),
                 ),
               )
             ],

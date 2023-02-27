@@ -1,0 +1,10 @@
+{
+    "search": "Search",
+    "@search": {
+        "description": "Search"
+    },
+    "errorDigitSequence": "Enter the correct sequence of digits",
+    "@errorDigitSequence": {
+        "description": "Error displaying message that user enter wrong sequence od digits"
+    }
+}
